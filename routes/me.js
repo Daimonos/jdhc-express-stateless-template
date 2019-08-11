@@ -1,24 +1,22 @@
-const router = require('express').Router();
-const Asset = require('mongoose').model('Asset');
-const checkToken = require('../middleware/checkToken');
+const router = require('express').Router()
+const Asset = require('mongoose').model('Asset')
+const checkToken = require('../middleware/checkToken')
 
-router.route('/')
-  .get(checkToken, getMe);
-
-router.route('/assets')
-  .get(checkToken, getMyAssets);
-
-module.exports = router;
-
-async function getMe(req, res, next) {
-  res.json(req.user);
+async function getMe(req, res) {
+  res.json(req.user)
 }
 
 async function getMyAssets(req, res, next) {
   try {
-    let assets = await Asset.find({ assignedTo: req.user._id });
-    res.json(assets);
+    const assets = await Asset.find({ assignedTo: req.user._id })
+    res.json(assets)
   } catch (err) {
-    next(err);
+    next(err)
   }
 }
+
+router.route('/').get(checkToken, getMe)
+
+router.route('/assets').get(checkToken, getMyAssets)
+
+module.exports = router

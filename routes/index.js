@@ -1,6 +1,11 @@
+const users = require('./users')
+const authentication = require('./authentication')
+const me = require('./me')
+const assets = require('./assets')
+
 module.exports = {
-  users: require('./users'),
-  authentication: require('./authentication'),
-  me: require('./me'),
-  assets: require('./assets')
+  users,
+  authentication,
+  me,
+  assets,
 }

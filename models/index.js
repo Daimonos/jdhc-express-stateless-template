@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
-const env = process.env.NODE_ENV || 'development';
-const db = require('../config/db')[env];
+const mongoose = require('mongoose')
 
-mongoose.connect(db);
+const env = process.env.NODE_ENV || 'development'
+const db = require('../config/db')[env]
 
-require('./user.model');
-require('./asset.model');
+mongoose.connect(db)
+
+require('./user.model')
+require('./asset.model')
